@@ -1,24 +1,25 @@
-<!doctype html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Dungeonly</title>
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <script defer src="{{ mix('js/app.js') }}"></script>
-    </head>
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-d10 />
+            </a>
+        </x-slot>
 
-    <body>
-        <header>
-            Dungeonly
-        </header>
+        <div>
+            Dungeonly: Coming soon.
+        </div>
 
-        <main>
-            Coming soon...
-        </main>
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
 
-        <footer>
-            Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-        </footer>
-    </body>
-</html>
+            @if(Route::has('register'))
+                <a class="ml-4 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('No account?') }}
+                </a>
+            @endif
+        </div>
+    </x-jet-authentication-card>
+</x-guest-layout>
