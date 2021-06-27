@@ -14,7 +14,7 @@
                     <div class="p-6 sm:px-20 bg-white md:grid md:grid-cols-2 md:gap-4 md:items-end md:justify-around {{ $results ? 'border-b' : '' }}">
                         <div>
                             <x-jet-label for="dice" value="{{ __('Number of dice') }}" />
-                            <x-jet-input wire:model.lazy="dice" id="dice" class="block mt-1 w-full" type="number" autofocus onfocus="this.select()" wire:keydown.enter="rollDice" />
+                            <x-jet-input wire:model.lazy="dice" id="dice" class="block mt-1 w-full" type="number" autofocus wire:keydown.enter="rollDice" />
                         </div>
 
                         <div class="mt-2 md:mt-0 justify-self-end">
@@ -108,9 +108,15 @@
                         <div class="p-6 sm:px-20 bg-white grid grid-cols-4 md:grid-cols-10 gap-4">
                             @foreach($results as $key => $result)
                                 <div wire:key="result-{{ $key }}" class="
-                                    border text-center h-12 flex items-center justify-center
+                                    border text-center h-12 flex items-center justify-center die
                                     @if($result['edge'])
                                         border-green-400
+                                    @endif
+                                    @if($result['second'])
+                                        second
+                                    @endif
+                                    @if($result['limit'])
+                                        limit
                                     @endif
                                 ">
                                     {{ $result['roll'] }}

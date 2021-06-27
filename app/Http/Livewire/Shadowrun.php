@@ -61,7 +61,6 @@ class Shadowrun extends Component
      */
     public function mount()
     {
-        $this->dice = 0;
         $this->clearComputed();
     }
 
@@ -91,14 +90,19 @@ class Shadowrun extends Component
 
     /**
      * Adds or updates a single dice roll.
+     *
+     * @param  integer  $key
+     * @param  boolean  $limit
      */
-    public function singleRoll($key = null)
+    public function singleRoll($key = null, $limit = false)
     {
         $roll = new Calc('d6');
 
         $new = [
             'edge' => $this->isEdge($roll()),
             'roll' => $roll(),
+            'second' => is_numeric($key),
+            'limit' => $limit,
         ];
 
         if(is_numeric($key))
@@ -143,6 +147,8 @@ class Shadowrun extends Component
             }
 
             $this->runCalculations();
+
+            $this->emit('$refresh');
         }
     }
 
@@ -243,7 +249,7 @@ class Shadowrun extends Component
     {
         if($this->canRollEdge() && !$this->reroll)
         {
-            $this->singleRoll();
+            $this->singleRoll(null, true);
             $this->runCalculations();
 
             // Loops through the dice, marks a 6 as rerolled
