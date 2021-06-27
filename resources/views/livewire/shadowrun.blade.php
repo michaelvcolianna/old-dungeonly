@@ -109,15 +109,9 @@
                             @foreach($results as $key => $result)
                                 <div wire:key="result-{{ $key }}" class="
                                     border text-center h-12 flex items-center justify-center die
-                                    @if($result['edge'])
-                                        border-green-400
-                                    @endif
-                                    @if($result['second'])
-                                        second
-                                    @endif
-                                    @if($result['limit'])
-                                        limit
-                                    @endif
+                                    {{ ($result['edge']) ? 'border-green-400' : '' }}
+                                    {{ ($result['second']) ? 'second' : '' }}
+                                    {{ ($result['limit']) ? 'limit' : '' }}
                                 ">
                                     {{ $result['roll'] }}
                                 </div>
