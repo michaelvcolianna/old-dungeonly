@@ -27,7 +27,7 @@
                         </ul>
 
                         <x-jet-button class="mt-4" wire:click="rollDice({{ $loop->index }})">
-                            Roll (Doesn't Do Anything ... Yet)
+                            Roll (Doesn't Do Much ... Yet)
                         </x-jet-button>
                     </details>
                 </div>
@@ -49,8 +49,8 @@
                     <div class="text-gray-500">{{ $result ?? '???' }}</div>
                 </div>
 
-                @if($result)
-                    <x-jet-button class="mt-4" wire:click="clearRoll()">
+                @if(!is_null($result))
+                    <x-jet-button id="clear-roll" class="mt-4" wire:click="clearRoll">
                         Clear Roll
                     </x-jet-button>
                 @else
