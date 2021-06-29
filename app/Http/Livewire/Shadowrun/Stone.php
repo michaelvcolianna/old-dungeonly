@@ -64,8 +64,8 @@ class Stone extends Component
                 'recoil_compensation' => 6,
                 'clip_size' => 22,
                 'edge' => 3,
-                'primary_ranged_combat_skill' => 4,
-                'primary_ranged_combat_attribute'  => 4,
+                'primary_ranged_combat_skill' => 5,
+                'primary_ranged_combat_attribute'  => 5,
                 'intuition' => 4,
                 'reaction' => 4,
                 'primary_ranged_weapon_damage' => 8,
@@ -129,7 +129,16 @@ class Stone extends Component
     public function rollDice($character)
     {
         $this->clearRoll();
-        // nuffin yet
+
+        if(array_key_exists($character, $this->characters))
+        {
+            $character = $this->characters[$character];
+            $this->roller = $character['name'];
+            $this->base_dice = ($character['primary_ranged_combat_skill'] + $character['primary_ranged_combat_attribute']);
+            $this->auto_modifiers = 'net penalties lol';
+            $this->dice_to_roll = 'writing code now';
+            $this->result = 0;
+        }
     }
 
     /**
