@@ -50,6 +50,7 @@ class CreateShadowrunsTable extends Migration
 
             // Multi-line text fields (65,535 chars should be enough)
             $fields_text = [
+                'movement',
                 'fake_ids_related_lifestyles_funds_licenses',
                 'cyberdeck_programs',
                 'vehicle_notes',
@@ -80,7 +81,6 @@ class CreateShadowrunsTable extends Migration
                 'judge_intentions',
                 'memory',
                 'lift_carry',
-                'movement',
                 'physical_limit',
                 'mental_limit',
                 'social_limit',

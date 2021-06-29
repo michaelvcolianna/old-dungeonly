@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Shadowrun;
 
 use Livewire\Component;
 use DiceCalc\Calc;
 
-class Shadowrun extends Component
+class Dice extends Component
 {
     /**
      * The number of dice to roll.
@@ -84,7 +84,7 @@ class Shadowrun extends Component
      */
     public function render()
     {
-        return view('livewire.shadowrun')
+        return view('livewire.shadowrun.dice')
             ->layout('layouts.guest');
     }
 

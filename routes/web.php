@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Shadowrun;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,15 @@ use App\Http\Livewire\Shadowrun;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::get('/shadowrun', Shadowrun::class);
+Route::redirect('/shadowrun', '/shadowrun/dice');
+
+Route::get('/shadowrun/dice', function() {
+    return view('shadowrun.dice');
+})->name('shadowrun.dice');
+
+Route::get('/shadowrun/stone', function() {
+    return view('shadowrun.stone');
+})->name('shadowrun.stone');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
