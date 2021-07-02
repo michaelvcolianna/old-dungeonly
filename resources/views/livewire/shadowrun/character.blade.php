@@ -47,47 +47,13 @@
 
         @if($character->skills)
             <div class="grid grid-cols-64-18-10-pct gap-4-pct my-2">
-                <div class="text-gray-800 font-bold">Skill</div>
+                <div class="text-gray-800 font-bold">Name</div>
                 <div class="text-gray-800 font-bold">Rating</div>
                 <div></div>
             </div>
 
-            @foreach($character->skills as $id => $skill)
-                <div
-                    class="grid grid-cols-64-18-10-pct gap-4-pct my-2"
-                    wire:key="skill-{{ $id }}"
-                >
-                    <div class="" wire:key="skill-name-{{ $id }}">
-                        <x-jet-label
-                            class="hidden" for="skill-name-{{ $id }}"
-                            value="Skill Name"
-                        />
-                        <x-jet-input
-                            id="skill-name-{{ $id }}" class="block mt-1 w-full"
-                            type="text"
-                            wire:model.debounce.750ms="character.skills.{{ $id }}.name"
-                        />
-                    </div>
-
-                    <div class="" wire:key="skill-rating-{{ $id }}">
-                        <x-jet-label
-                            class="hidden" for="skill-rating-{{ $id }}"
-                            value="Skill Rating"
-                        />
-                        <x-jet-input
-                            id="skill-rating-{{ $id }}" type="text"
-                            class="block mt-1 w-full"
-                            wire:model.debounce.750ms="character.skills.{{ $id }}.rating"
-                        />
-                    </div>
-
-                    <div
-                        class="flex items-center justify-center text-gray-800"
-                        wire:click="deleteSkill({{ $id }})"
-                    >
-                        <x-trash />
-                    </div>
-                </div>
+            @foreach(array_keys($character->skills) as $id)
+                <x-skill :id="$id" />
             @endforeach
         @endif
 
