@@ -296,65 +296,8 @@
         <x-slot name="title">Adept Powers or Other Abilities</x-slot>
 
         @if($character->adept_powers_or_other_abilities)
-            @foreach($character->adept_powers_or_other_abilities as $id => $power)
-                <div
-                    class="grid grid-cols-86-10-pct gap-4-pct my-2"
-                    wire:key="powers-{{ $id }}"
-                >
-                    <div class="">
-                        <div
-                            class="mt-2"
-                            wire:key="powers-name-{{ $id }}"
-                        >
-                            <x-jet-label
-                                for="powers-name-{{ $id }}"
-                                value="Name"
-                            />
-                            <x-jet-input
-                                id="powers-name-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.adept_powers_or_other_abilities.{{ $id }}.name"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-2"
-                            wire:key="powers-rating-{{ $id }}"
-                        >
-                            <x-jet-label
-                                for="powers-rating-{{ $id }}"
-                                value="Rating"
-                            />
-                            <x-jet-input
-                                id="powers-rating-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.adept_powers_or_other_abilities.{{ $id }}.rating"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-2"
-                            wire:key="powers-notes-{{ $id }}"
-                        >
-                            <x-jet-label
-                                for="powers-notes-{{ $id }}"
-                                value="Notes"
-                            />
-                            <x-jet-input
-                                id="powers-notes-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.adept_powers_or_other_abilities.{{ $id }}.notes"
-                            />
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex items-center justify-center text-gray-800"
-                        wire:click="deletePower({{ $id }})"
-                    >
-                        <x-trash />
-                    </div>
-                </div>
+            @foreach(array_keys($character->adept_powers_or_other_abilities) as $id)
+                <x-power :id="$id" :border="!$loop->last" />
             @endforeach
         @endif
 
