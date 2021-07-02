@@ -18,7 +18,11 @@ Route::view('/', 'welcome')->name('welcome');
 Route::view('/shadowrun/dice', 'shadowrun.dice');
 
 Route::middleware(['auth', 'verified'])->group(function() {
-    Route::view('/shadowrun/character', 'shadowrun.character');
+    Route::get('/shadowrun/character', function() {
+        return view('shadowrun.character', [
+            'cid' => auth()->user()->shadowrunners()->first()->id,
+        ]);
+    });
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {

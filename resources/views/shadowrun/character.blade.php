@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Shadowrun Character Sheet: <livewire:shadowrun.header />
+            Shadowrun Character Sheet:
+            <livewire:shadowrun.character.header :cid="$cid" />
         </h2>
     </x-slot>
 
