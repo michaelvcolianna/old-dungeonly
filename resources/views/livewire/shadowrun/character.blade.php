@@ -68,20 +68,10 @@
         <div>
             @foreach(config('shadowrun.fields.ids_lifestyles_currency') as $name => $field)
                 @if($field['db'] == 'text')
-                    <div
-                        class="mt-{{ $loop->first ? 4 : 2 }}"
-                        wire:key="field-{{ $name }}"
-                    >
-                        <x-jet-label
-                            class="mt-2" :for="$name"
-                            :value="$field['label']"
-                        />
-                        <x-textarea
-                            :id="$name" rows="2"
-                            class="block mt-1 w-full"
-                            wire:model.debounce.750ms="character.{{ $name }}"
-                        />
-                    </div>
+                    <x-multiline
+                        :mt="$loop->first ? 4 : 2" :name="$name"
+                        :label="$field['label']"
+                    />
                 @else
                     <x-field
                         :mt="$loop->first ? 4 : 2" :name="$name"
