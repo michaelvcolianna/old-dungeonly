@@ -1,12 +1,41 @@
 <x-guest-layout>
-    <div class="min-h-screen bg-gray-100">
-        <x-shadowrun.header />
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Shadowrun Dice Roller
+        </h2>
+    </x-slot>
 
-        <main>
-            <livewire:shadowrun.dice />
-        </main>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <x-section>
+                    <x-details>
+                        <x-slot name="title">Roll Initiative</x-slot>
 
-        <livewire:styles />
-        <livewire:scripts />
+                        <livewire:shadowrun.initiative />
+                    </x-details>
+                </x-section>
+
+                <div class="p-6 sm:px-20 bg-white border-b">
+                    ranged combat
+                </div>
+
+                <div class="p-6 sm:px-20 bg-white border-b">
+                    melee combat
+                </div>
+
+                <div class="p-6 sm:px-20 bg-white border-b">
+                    spell casting
+                </div>
+
+                <div class="p-6 sm:px-20 bg-white border-b">
+                    ranged defend
+                </div>
+
+                <div class="p-6 sm:px-20 bg-white">
+                    melee defend
+                </div>
+            </div>
+        </div>
     </div>
 </x-guest-layout>

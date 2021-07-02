@@ -60,4 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the Shadowrunners for the user.
+     */
+    public function shadowrunners()
+    {
+        return $this->hasMany(Shadowrunner::class);
+    }
 }

@@ -14,6 +14,13 @@ module.exports = {
             fontFamily: {
                 sans: [...defaultTheme.fontFamily.sans],
             },
+            gap: {
+                '4-pct': '4%',
+            },
+            gridTemplateColumns: {
+                '86-10-pct': '86% 10%',
+                '64-18-10-pct': '64% 18% 10%',
+            },
         },
     },
 

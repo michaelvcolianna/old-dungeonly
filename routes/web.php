@@ -15,16 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::redirect('/shadowrun', '/shadowrun/dice');
+Route::view('/shadowrun/dice', 'shadowrun.dice');
 
-Route::get('/shadowrun/dice', function() {
-    return view('shadowrun.dice');
-})->name('shadowrun.dice');
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::view('/shadowrun/character', 'shadowrun.character');
+});
 
-Route::get('/shadowrun/stone', function() {
-    return view('shadowrun.stone');
-})->name('shadowrun.stone');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     return view('dashboard');
 })->name('dashboard');
