@@ -1,7 +1,22 @@
 <div>
     <x-section>
+        <x-slot name="title">Overview</x-slot>
+
         <x-field mt="0" name="character" label="Character" />
-        {{-- <x-field name="notes" label="Notes" /> --}}
+
+        <div
+            class="mt-2"
+            wire:key="field-notes"
+        >
+            <x-jet-label
+                class="mt-2" for="notes"
+                value="Notes"
+            />
+            <x-textarea
+                id="notes" class="block mt-1 w-full" :rows="8"
+                wire:model.debounce.750ms="character.notes"
+            />
+        </div>
     </x-section>
 
     <x-section>
