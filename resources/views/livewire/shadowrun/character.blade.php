@@ -89,9 +89,18 @@
             <div class="text-gray-800 font-bold">Primary Armor</div>
 
             @foreach(config('shadowrun.arrays.primary_armor.fields') as $name => $field)
-                <x-field
-                    name="primary_armor.{{ $name }}" :label="$field['label']"
-                />
+                @if($field['rows'])
+                    <x-multiline
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        :rows="$field['rows']"
+                        name="primary_armor.{{ $name }}"
+                    />
+                @else
+                    <x-field
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        name="primary_armor.{{ $name }}"
+                    />
+                @endif
             @endforeach
         </div>
 
@@ -99,9 +108,18 @@
             <div class="text-gray-800 font-bold">Primary Ranged Weapon</div>
 
             @foreach(config('shadowrun.arrays.primary_ranged_weapon.fields') as $name => $field)
-                <x-field
-                    name="primary_ranged_weapon.{{ $name }}" :label="$field['label']"
-                />
+                @if($field['rows'])
+                    <x-multiline
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        :rows="$field['rows']"
+                        name="primary_ranged_weapon.{{ $name }}"
+                    />
+                @else
+                    <x-field
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        name="primary_ranged_weapon.{{ $name }}"
+                    />
+                @endif
             @endforeach
         </div>
 
@@ -109,9 +127,18 @@
             <div class="text-gray-800 font-bold">Primary Melee Weapon</div>
 
             @foreach(config('shadowrun.arrays.primary_melee_weapon.fields') as $name => $field)
-                <x-field
-                    name="primary_melee_weapon.{{ $name }}" :label="$field['label']"
-                />
+                @if($field['rows'])
+                    <x-multiline
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        :rows="$field['rows']"
+                        name="primary_melee_weapon.{{ $name }}"
+                    />
+                @else
+                    <x-field
+                        :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                        name="primary_melee_weapon.{{ $name }}"
+                    />
+                @endif
             @endforeach
         </div>
     </x-section>
@@ -202,31 +229,20 @@
     <x-section>
         <x-slot name="title">Cyberdeck</x-slot>
 
-        <x-field name="cyberdeck.name" label="Name" />
-        <x-field name="cyberdeck.attack" label="Attack" />
-        <x-field name="cyberdeck.sleaze" label="Sleaze" />
-        <x-field name="cyberdeck.device_rating" label="Device Rating" />
-        <x-field name="cyberdeck.data_processing" label="Data Processing" />
-        <x-field name="cyberdeck.firewall" label="Firewall" />
-
-        <div
-            class="mt-2"
-            wire:key="cyberdeck-programs"
-        >
-            <x-jet-label
-                for="cyberdeck-programs"
-                value="Programs"
-            />
-            <x-textarea
-                id="cyberdeck-programs" class="block mt-1 w-full" rows="3"
-                wire:model.debounce.750ms="character.cyberdeck.programs"
-            />
-        </div>
-
-        <x-field
-            name="cyberdeck.matrix_condition_monitor"
-            label="Matrix Condition Monitor"
-        />
+        @foreach(config('shadowrun.arrays.cyberdeck.fields') as $name => $field)
+            @if($field['rows'])
+                <x-multiline
+                    :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                    :rows="$field['rows']"
+                    name="cyberdeck.{{ $name }}"
+                />
+            @else
+                <x-field
+                    :mt="$loop->first ? 4 : 2" :label="$field['label']"
+                    name="cyberdeck.{{ $name }}"
+                />
+            @endif
+        @endforeach
     </x-section>
 
     <x-section>
