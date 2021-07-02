@@ -6,21 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-# Skills: [name, rating]
-# Primary Armor: [name, rating]
-# Primary Ranged Weapon: [name, damage, damage type, accuracy, armor penetration, mode, recoil compensation, ammo]
-# Primary Melee Weapon: [name, reach, damage, damage type, accuracy, armor penetration]
-# Qualities: [quality, notes]
-# Contacts: [name, loyalty, connection, favor, notes]
-# Ranged weapons: [name, damage, accuracy, armor penetration, mode, recoil compensation, ammo]
-# Melee weapons: [name, reach, damage, accuracy, armor penetration]
-# Armor: [name, rating, notes]
-# Cyberdeck: [name, attack, sleaze, device rating, data processing, firewall, programs, matrix condition monitor]
-# Augmentations: [name, rating, notes, essence]
-# Spells etc: [name, type/target, range, duration, drain]
-# Gear: [name, rating]
-# Powers: [name, rating, notes]
-
 class Shadowrunner extends Model
 {
     use HasFactory;
@@ -33,6 +18,9 @@ class Shadowrunner extends Model
      */
     protected $fillable = [
         'skills',
+        'primary_armor',
+        'primary_ranged_weapon',
+        'primary_melee_weapon',
         'qualities',
         'contacts',
         'ranged_weapons',
@@ -51,10 +39,10 @@ class Shadowrunner extends Model
      * @var array
      */
     protected $casts = [
+        'skills' => 'array',
         'primary_armor' => 'array',
         'primary_ranged_weapon' => 'array',
         'primary_melee_weapon' => 'array',
-        'skills' => 'array',
         'qualities' => 'array',
         'contacts' => 'array',
         'ranged_weapons' => 'array',

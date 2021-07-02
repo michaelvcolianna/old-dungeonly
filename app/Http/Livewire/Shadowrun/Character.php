@@ -17,6 +17,9 @@ class Character extends Component
     /**
      * Validation rules.
      *
+     * Cycles through the configuration for each field and creates the rules,
+     * along with any sub-fields for arrays.
+     *
      * @return array
      */
     protected function rules()
@@ -25,91 +28,24 @@ class Character extends Component
         {
             foreach($group as $name => $field)
             {
-                // No validation needed
-                if($field['db'] != 'json')
+                // Base field names
+                $rules['character.' . $name] = 'nullable';
+
+                // Array subfields
+                if($field['db'] == 'json')
                 {
-                    $rules['character.' . $name] = 'nullable';
+                    $config = config('shadowrun.arrays.' . $name);
+                    $dot = ($config['repeats'])
+                        ? '.*.'
+                        : '.'
+                        ;
+
+                    foreach($config['fields'] as $subname => $subfield)
+                    {
+                        $rules['character.' . $name . $dot . $subname] = 'nullable';
+                    }
                 }
             }
-        }
-
-        $arrays = [
-            'skills',
-            'skills.*.name',
-            'skills.*.rating',
-            'primary_armor.name',
-            'primary_armor.rating',
-            'primary_ranged_weapon.name',
-            'primary_ranged_weapon.damage',
-            'primary_ranged_weapon.damage_type',
-            'primary_ranged_weapon.accuracy',
-            'primary_ranged_weapon.armor_penetration',
-            'primary_ranged_weapon.mode',
-            'primary_ranged_weapon.recoil_compensation',
-            'primary_ranged_weapon.ammo',
-            'primary_melee_weapon.name',
-            'primary_melee_weapon.reach',
-            'primary_melee_weapon.damage',
-            'primary_melee_weapon.damage_type',
-            'primary_melee_weapon.accuracy',
-            'primary_melee_weapon.armor_penetration',
-            'qualities',
-            'qualities.*.name',
-            'qualities.*.notes',
-            'contacts',
-            'contacts.*.name',
-            'contacts.*.loyalty',
-            'contacts.*.connection',
-            'contacts.*.favor',
-            'contacts.*.notes',
-            'ranged_weapons',
-            'ranged_weapons.*.name',
-            'ranged_weapons.*.damage',
-            'ranged_weapons.*.accuracy',
-            'ranged_weapons.*.armor_penetration',
-            'ranged_weapons.*.mode',
-            'ranged_weapons.*.recoil_compensation',
-            'ranged_weapons.*.ammo',
-            'melee_weapons',
-            'melee_weapons.*.name',
-            'melee_weapons.*.reach',
-            'melee_weapons.*.damage',
-            'melee_weapons.*.accuracy',
-            'melee_weapons.*.armor_penetration',
-            'armor',
-            'armor.*.name',
-            'armor.*.rating',
-            'armor.*.notes',
-            'cyberdeck.name',
-            'cyberdeck.attack',
-            'cyberdeck.sleaze',
-            'cyberdeck.device_rating',
-            'cyberdeck.data_processing',
-            'cyberdeck.firewall',
-            'cyberdeck.programs',
-            'cyberdeck.matrix_condition_monitor',
-            'augmentations',
-            'augmentations.*.name',
-            'augmentations.*.rating',
-            'augmentations.*.notes',
-            'augmentations.*.essence',
-            'spells_preparations_rituals_complex_forms',
-            'spells_preparations_rituals_complex_forms.*.name',
-            'spells_preparations_rituals_complex_forms.*.type_target',
-            'spells_preparations_rituals_complex_forms.*.range',
-            'spells_preparations_rituals_complex_forms.*.duration',
-            'spells_preparations_rituals_complex_forms.*.drain',
-            'gear',
-            'gear.*.name',
-            'gear.*.rating',
-            'adept_powers_or_other_abilities',
-            'adept_powers_or_other_abilities.*.name',
-            'adept_powers_or_other_abilities.*.rating',
-            'adept_powers_or_other_abilities.*.notes',
-        ];
-        foreach($arrays as $name)
-        {
-            $rules['character.' . $name] = 'nullable';
         }
 
         return $rules;
@@ -140,6 +76,7 @@ class Character extends Component
     {
         $this->character->save();
 
+        // Notify the header component that the name changed
         if($propertyName == 'character.character')
         {
             $this->emit('characterNameUpdated');
