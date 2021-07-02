@@ -275,50 +275,15 @@
 
     <x-section>
         <x-slot name="title">Gear</x-slot>
-
         @if($character->gear)
             <div class="grid grid-cols-64-18-10-pct gap-4-pct my-2">
-                <div class="text-gray-800 font-bold">Gear</div>
+                <div class="text-gray-800 font-bold">Name</div>
                 <div class="text-gray-800 font-bold">Rating</div>
                 <div></div>
             </div>
 
-            @foreach($character->gear as $id => $gear)
-                <div
-                    class="grid grid-cols-64-18-10-pct gap-4-pct my-2"
-                    wire:key="gear-{{ $id }}"
-                >
-                    <div class="" wire:key="gear-name-{{ $id }}">
-                        <x-jet-label
-                            class="hidden" for="gear-name-{{ $id }}"
-                            value="Gear Name"
-                        />
-                        <x-jet-input
-                            id="gear-name-{{ $id }}" class="block mt-1 w-full"
-                            type="text"
-                            wire:model.debounce.750ms="character.gear.{{ $id }}.name"
-                        />
-                    </div>
-
-                    <div class="" wire:key="skill-gear-{{ $id }}">
-                        <x-jet-label
-                            class="hidden" for="gear-rating-{{ $id }}"
-                            value="Gear Rating"
-                        />
-                        <x-jet-input
-                            id="gear-rating-{{ $id }}" type="text"
-                            class="block mt-1 w-full"
-                            wire:model.debounce.750ms="character.gear.{{ $id }}.rating"
-                        />
-                    </div>
-
-                    <div
-                        class="flex items-center justify-center text-gray-800"
-                        wire:click="deleteGear({{ $id }})"
-                    >
-                        <x-trash />
-                    </div>
-                </div>
+            @foreach(array_keys($character->gear) as $id)
+                <x-gear :id="$id" />
             @endforeach
         @endif
 
