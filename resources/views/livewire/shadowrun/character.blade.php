@@ -2,7 +2,7 @@
     <x-section>
         <x-slot name="title">Overview</x-slot>
 
-        <x-field mt="0" name="character" label="Character" />
+        <x-field mt="2" name="character" label="Character" />
 
         <div
             class="mt-2"
@@ -147,95 +147,8 @@
         <x-slot name="title">Contacts</x-slot>
 
         @if($character->contacts)
-            @foreach($character->contacts as $id => $contact)
-                <div
-                    class="grid grid-cols-86-10-pct gap-4-pct my-2"
-                    wire:key="contact-{{ $id }}"
-                >
-                    <div>
-                        <div
-                            class="mt-4"
-                            wire:key="field-contact-name-{{ $id }}"
-                        >
-                            <x-jet-label
-                                class="mt-2" for="contact-name-{{ $id }}"
-                                value="Name"
-                            />
-                            <x-jet-input
-                                id="contact-name-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.contacts.{{ $id }}.name"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-4"
-                            wire:key="field-contact-loyalty-{{ $id }}"
-                        >
-                            <x-jet-label
-                                class="mt-2" for="contact-loyalty-{{ $id }}"
-                                value="Loyalty"
-                            />
-                            <x-jet-input
-                                id="contact-loyalty-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.contacts.{{ $id }}.loyalty"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-4"
-                            wire:key="field-contact-connection-{{ $id }}"
-                        >
-                            <x-jet-label
-                                class="mt-2" for="contact-connection-{{ $id }}"
-                                value="Connection"
-                            />
-                            <x-jet-input
-                                id="contact-connection-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.contacts.{{ $id }}.connection"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-4"
-                            wire:key="field-contact-favor-{{ $id }}"
-                        >
-                            <x-jet-label
-                                class="mt-2" for="contact-favor-{{ $id }}"
-                                value="Favor"
-                            />
-                            <x-jet-input
-                                id="contact-favor-{{ $id }}" type="text"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.contacts.{{ $id }}.favor"
-                            />
-                        </div>
-
-                        <div
-                            class="mt-4"
-                            wire:key="field-contact-notes-{{ $id }}"
-                        >
-                            <x-jet-label
-                                class="mt-2" for="contact-notes-{{ $id }}"
-                                value="Notes"
-                            />
-                            <x-textarea
-                                id="contact-notes-{{ $id }}"
-                                class="block mt-1 w-full"
-                                wire:model.debounce.750ms="character.contacts.{{ $id }}.notes"
-                            />
-                        </div>
-                    </div>
-
-                    <div
-                        class="flex items-center justify-center text-gray-800"
-                        wire:click="deleteContact({{ $id }})"
-                    >
-                        <x-trash />
-                    </div>
-                </div>
+            @foreach(array_keys($character->contacts) as $id)
+                <x-contact :id="$id" :border="!$loop->last" />
             @endforeach
         @endif
 
