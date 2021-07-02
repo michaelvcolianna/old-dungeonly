@@ -1,10 +1,10 @@
 <div>
-    <x-shadowrun.section>
+    {{-- <x-shadowrun.section>
         <x-slot name="title">Overview</x-slot>
 
         <x-shadowrun.field mt="2" name="character" label="Character" />
         <x-shadowrun.multiline :mt="2" name="notes" label="Notes" :rows="8" />
-    </x-shadowrun.section>
+    </x-shadowrun.section> --}}
 
     <x-shadowrun.section>
         <x-slot name="title">Personal Data</x-slot>

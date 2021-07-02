@@ -4,6 +4,6 @@
     <x-jet-label for="{{ $name }}" value="{{ $label }}" />
     <x-jet-input
         id="{{ $name }}" class="block mt-1 w-full" type="text"
-        wire:model.debounce.750ms="character.{{ $name }}"
+        wire:model="character.{{ $name }}"
     />
 </div>

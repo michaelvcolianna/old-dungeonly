@@ -8,7 +8,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option defines how each field is set up in the database. If a field
-    | isn't JSON (array), it also provides the HTML label text.
+    | isn't JSON (array), it also provides the HTML label text. It also sets the
+    | number of rows for a textarea field.
     |
     */
 
@@ -20,7 +21,8 @@ return [
             ],
             'notes' => [
                 'db' => 'text',
-                'label' => 'notes',
+                'label' => 'Notes',
+                'rows' => 8,
             ],
         ],
         'personal_data' => [
@@ -192,6 +194,7 @@ return [
             'fake_ids_related_lifestyles_funds_licenses' => [
                 'db' => 'text',
                 'label' => 'Fake IDs/Related Lifestyles/Funds/Licenses',
+                'rows' => 2,
             ],
         ],
         'core_combat_info' => [

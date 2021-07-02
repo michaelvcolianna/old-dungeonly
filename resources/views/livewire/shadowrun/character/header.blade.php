@@ -1,3 +1,3 @@
 <div class="font-normal md:inline">
-    {{ $name }} ({{ $player }})
+    {{ $character->character }} ({{ $character->user->name }})
 </div>

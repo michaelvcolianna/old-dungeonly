@@ -4,15 +4,16 @@ namespace App\Http\Livewire\Shadowrun\Character;
 
 use App\Http\Livewire\Shadowrun;
 
-class Header extends Shadowrun
+class Overview extends Shadowrun
 {
     /**
      * Finish setting up the component.
      */
     protected function individualSetup()
     {
+        $this->key = 'overview';
         $this->character = $this->builder
-            ->addSelect('user_id', 'character')
+            ->addSelect('character', 'notes')
             ->first()
             ;
     }
@@ -24,6 +25,6 @@ class Header extends Shadowrun
      */
     public function render()
     {
-        return view('livewire.shadowrun.character.header');
+        return view('livewire.shadowrun.character.fields');
     }
 }

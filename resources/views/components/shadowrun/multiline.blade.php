@@ -4,6 +4,6 @@
     <x-jet-label class="mt-2" for="{{ $name }}" value="{{ $label }}" />
     <x-shadowrun.textarea
         id="{{ $name }}" class="block mt-1 w-full" rows="{{ $rows }}"
-        wire:model.debounce.750ms="character.{{ $name }}"
+        wire:model="character.{{ $name }}"
     />
 </div>
