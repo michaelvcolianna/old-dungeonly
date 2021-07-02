@@ -88,60 +88,31 @@
         <div class="mt-4">
             <div class="text-gray-800 font-bold">Primary Armor</div>
 
-            <x-field name="primary_armor.name" label="Name" />
-            <x-field name="primary_armor.rating" label="Rating" />
+            @foreach(config('shadowrun.arrays.primary_armor.fields') as $name => $field)
+                <x-field
+                    name="primary_armor.{{ $name }}" :label="$field['label']"
+                />
+            @endforeach
         </div>
 
         <div class="mt-4">
             <div class="text-gray-800 font-bold">Primary Ranged Weapon</div>
 
-            <x-field
-                name="primary_ranged_weapon.name" label="Name"
-            />
-            <x-field
-                name="primary_ranged_weapon.damage" label="Damage"
-            />
-            <x-field
-                name="primary_ranged_weapon.damage_type" label="Damage Type"
-            />
-            <x-field
-                name="primary_ranged_weapon.accuracy" label="Accuracy"
-            />
-            <x-field
-                name="primary_ranged_weapon.armor_penetration" label="AP"
-            />
-            <x-field
-                name="primary_ranged_weapon.mode" label="Mode"
-            />
-            <x-field
-                name="primary_ranged_weapon.recoil_compensation" label="RC"
-            />
-            <x-field
-                name="primary_ranged_weapon.ammo" label="Ammo"
-            />
+            @foreach(config('shadowrun.arrays.primary_ranged_weapon.fields') as $name => $field)
+                <x-field
+                    name="primary_ranged_weapon.{{ $name }}" :label="$field['label']"
+                />
+            @endforeach
         </div>
 
         <div class="mt-4">
             <div class="text-gray-800 font-bold">Primary Melee Weapon</div>
 
-            <x-field
-                name="primary_melee_weapon.name" label="Name"
-            />
-            <x-field
-                name="primary_melee_weapon.reach" label="Reach"
-            />
-            <x-field
-                name="primary_melee_weapon.damage" label="Damage"
-            />
-            <x-field
-                name="primary_melee_weapon.damage_type" label="Damage Type"
-            />
-            <x-field
-                name="primary_melee_weapon.accuracy" label="Accuracy"
-            />
-            <x-field
-                name="primary_melee_weapon.armor_penetration" label="AP"
-            />
+            @foreach(config('shadowrun.arrays.primary_melee_weapon.fields') as $name => $field)
+                <x-field
+                    name="primary_melee_weapon.{{ $name }}" :label="$field['label']"
+                />
+            @endforeach
         </div>
     </x-section>
 
