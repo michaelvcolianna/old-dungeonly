@@ -1,8 +1,7 @@
 @props(['id'])
 
 <div
-    class="grid grid-cols-64-18-10-pct gap-4-pct my-2"
-    wire:key="gear-{{ $id }}"
+    class="grid grid-cols-64-18-10-pct gap-4-pct my-2" wire:key="gear-{{ $id }}"
 >
     <div wire:key="gear-name-{{ $id }}">
         <x-jet-label
@@ -10,20 +9,18 @@
             value="{{ config('shadowrun.arrays.gear.fields.name.label') }}"
         />
         <x-jet-input
-            id="gear-name-{{ $id }}" class="block mt-1 w-full"
-            type="text"
+            id="gear-name-{{ $id }}" class="block mt-1 w-full" type="text"
             wire:model.debounce.750ms="character.gear.{{ $id }}.name"
         />
     </div>
 
-    <div class="" wire:key="gear-rating-{{ $id }}">
+    <div wire:key="gear-rating-{{ $id }}">
         <x-jet-label
             class="hidden" for="gear-rating-{{ $id }}"
             value="{{ config('shadowrun.arrays.gear.fields.rating.label') }}"
         />
         <x-jet-input
-            id="gear-rating-{{ $id }}" type="text"
-            class="block mt-1 w-full"
+            id="gear-rating-{{ $id }}" class="block mt-1 w-full" type="text"
             wire:model.debounce.750ms="character.gear.{{ $id }}.rating"
         />
     </div>
@@ -32,6 +29,6 @@
         class="flex items-center justify-center text-gray-800"
         wire:click="deleteGear({{ $id }})"
     >
-        <x-trash />
+        <x-shadowrun.trash />
     </div>
 </div>

@@ -7,13 +7,12 @@
     <div class="grid grid-cols-2 gap-4 {{ $border ? 'pb-8 border-b' : '' }}">
         @foreach(config('shadowrun.arrays.melee_weapons.fields') as $name => $field)
             @if($field['rows'])
-                <x-multiline
-                    :mt="0" :label="$field['label']"
-                    :rows="$field['rows']"
+                <x-shadowrun.multiline
+                    :mt="0" :label="$field['label']" :rows="$field['rows']"
                     name="melee_weapons.{{ $id }}.{{ $name }}"
                 />
             @else
-                <x-field
+                <x-shadowrun.field
                     :mt="0" :label="$field['label']"
                     name="melee_weapons.{{ $id }}.{{ $name }}"
                 />
@@ -25,6 +24,6 @@
         class="flex items-center justify-center text-gray-800"
         wire:click="deleteMeleeWeapon({{ $id }})"
     >
-        <x-trash />
+        <x-shadowrun.trash />
     </div>
 </div>
