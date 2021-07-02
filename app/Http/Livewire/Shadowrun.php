@@ -3,31 +3,17 @@
 namespace App\Http\Livewire;
 
 use App\Models\Shadowrunner;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 abstract class Shadowrun extends Component
 {
-    /**
-     * The builder for the character.
-     *
-     * @var \Illuminate\Database\Eloquent\Builder
-     */
-    protected Builder $builder;
-
     /**
      * The character.
      *
      * @var \App\Models\Shadowrunner
      */
     public Shadowrunner $character;
-
-    /**
-     * The config array key for this section.
-     *
-     * @var string
-     */
-    public $key;
 
     /**
      * Validation rules.
@@ -39,12 +25,9 @@ abstract class Shadowrun extends Component
      */
     protected function rules()
     {
-        if(empty($this->key))
-        {
-            return;
-        }
+        $rules = [];
 
-        foreach(config('shadowrun.fields.' . $this->key) as $name => $field)
+        foreach($this->getFieldConfig() as $name => $field)
         {
             // Base field names
             $rules['character.' . $name] = 'nullable';
@@ -52,13 +35,13 @@ abstract class Shadowrun extends Component
             // Array subfields
             if($field['db'] == 'json')
             {
-                $config = config('shadowrun.arrays.' . $name);
-                $dot = ($config['repeats'])
+                $array = $this->getArrayConfig($name);
+                $dot = ($array['repeats'])
                     ? '.*.'
                     : '.'
                     ;
 
-                foreach($config['fields'] as $subname => $subfield)
+                foreach($array['fields'] as $subname => $subfield)
                 {
                     $rules['character.' . $name . $dot . $subname] = 'nullable';
                 }
@@ -82,20 +65,18 @@ abstract class Shadowrun extends Component
      */
     public function mount()
     {
-        $this->builder = Shadowrunner::find(1)
-            ->select('id')
+        $builder = Shadowrunner::find(1)
+            ->select('id', 'user_id', 'character')
             ;
 
-        $this->individualSetup();
-    }
+        // Add extra columns for this component to the builder
+        foreach(array_keys($this->getFieldConfig()) as $name)
+        {
+            $builder->addSelect($name);
+        }
 
-    /**
-     * Contract for individual component customization.
-     *
-     * The extended class should set $key and add selects to $builder to make
-     * $character.
-     */
-    abstract protected function individualSetup();
+        $this->character = $builder->first();
+    }
 
     /**
      * Actions to take when a property is updated.
@@ -108,6 +89,37 @@ abstract class Shadowrun extends Component
 
         // Notify the other components something changed
         $this->emit('characterUpdated');
+    }
+
+    /**
+     * Gets the config key for the component.
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return Str::snake((new \ReflectionClass($this))->getShortName());
+    }
+
+    /**
+     * Gets the field config for the component.
+     *
+     * @return array
+     */
+    public function getFieldConfig()
+    {
+        return config('shadowrun.fields.' . $this->getKey()) ?? [];
+    }
+
+    /**
+     * Gets the array config for the specified field.
+     *
+     * @param  string  $field
+     * @return array
+     */
+    public function getArrayConfig($field)
+    {
+        return config('shadowrun.arrays.' . $field) ?? [];
     }
 
     /**

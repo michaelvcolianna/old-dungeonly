@@ -16,6 +16,13 @@
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Personal Data</x-slot>
+                        <livewire:shadowrun.character.personal-data />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
                 {{-- Legacy character sheet --}}
                 <livewire:shadowrun.character />
             </div>

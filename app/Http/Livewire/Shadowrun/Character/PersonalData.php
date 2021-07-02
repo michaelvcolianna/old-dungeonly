@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Shadowrun\Character;
 
 use App\Http\Livewire\Shadowrun;
 
-class Overview extends Shadowrun
+class PersonalData extends Shadowrun
 {
     /**
      * Render the component.
