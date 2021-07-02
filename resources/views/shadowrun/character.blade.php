@@ -23,6 +23,13 @@
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Attributes</x-slot>
+                        <livewire:shadowrun.character.attributes />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
                 {{-- Legacy character sheet --}}
                 <livewire:shadowrun.character />
             </div>

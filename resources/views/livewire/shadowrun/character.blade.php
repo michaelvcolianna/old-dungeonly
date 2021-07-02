@@ -17,7 +17,7 @@
                 />
             @endforeach
         </div>
-    </x-shadowrun.section> --}}
+    </x-shadowrun.section>
 
     <x-shadowrun.section>
         <x-slot name="title">Attributes</x-slot>
@@ -29,7 +29,7 @@
                 />
             @endforeach
         </div>
-    </x-shadowrun.section>
+    </x-shadowrun.section> --}}
 
     <x-shadowrun.section>
         <x-slot name="title">Skills</x-slot>

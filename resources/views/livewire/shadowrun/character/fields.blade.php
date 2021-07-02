@@ -1,4 +1,4 @@
-<div>
+<div class="group--{{ $this->getKey() }}">
     @foreach($this->getFieldConfig() as $name => $field)
         <x-dynamic-component
             :mt="$loop->first ? 4 : 2" :name="$name" :label="$field['label']"
