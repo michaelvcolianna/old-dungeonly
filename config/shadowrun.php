@@ -190,7 +190,7 @@ return [
                 'label' => 'Licenses',
             ],
             'fake_ids_related_lifestyles_funds_licenses' => [
-                'db' => 'string',
+                'db' => 'text',
                 'label' => 'Fake IDs/Related Lifestyles/Funds/Licenses',
             ],
         ],
