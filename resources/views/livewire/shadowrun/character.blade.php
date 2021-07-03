@@ -49,7 +49,7 @@
         <x-jet-button class="mt-2" wire:click="addSkill">
             Add Skill
         </x-jet-button>
-    </x-shadowrun.section> --}}
+    </x-shadowrun.section>
 
     <x-shadowrun.section>
         <x-slot name="title">IDs/Lifestyles/Currency</x-slot>
@@ -69,7 +69,7 @@
                 @endif
             @endforeach
         </div>
-    </x-shadowrun.section>
+    </x-shadowrun.section> --}}
 
     <x-shadowrun.section>
         <x-slot name="title">Core Combat Info</x-slot>
