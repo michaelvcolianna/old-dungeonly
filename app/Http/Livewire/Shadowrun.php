@@ -3,11 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Shadowrunner;
+use App\Traits\Shadowrun\HasCharacter;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
 abstract class Shadowrun extends Component
 {
+    use HasCharacter;
+
     /**
      * Fields that prompt special handling.
      *
@@ -20,11 +23,13 @@ abstract class Shadowrun extends Component
     ];
 
     /**
-     * The character.
+     * Events the component listens for.
      *
-     * @var \App\Models\Shadowrunner
+     * @var array
      */
-    public Shadowrunner $character;
+    protected $listeners = [
+        'characterUpdated' => '$refresh',
+    ];
 
     /**
      * Validation rules.
@@ -97,15 +102,6 @@ abstract class Shadowrun extends Component
             $rules['character.' . $this->getKey() . $dot . $subname] = 'nullable';
         }
     }
-
-    /**
-     * Events the component listens for.
-     *
-     * @var array
-     */
-    protected $listeners = [
-        'characterUpdated' => '$refresh',
-    ];
 
     /**
      * Actions to take when the component is loaded.

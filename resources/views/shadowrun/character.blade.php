@@ -68,7 +68,16 @@
                 <x-shadowrun.section>
                     <x-shadowrun.details>
                         <x-slot name="title">Condition Monitor</x-slot>
-                        <livewire:shadowrun.character.condition-monitor />
+
+                        <x-shadowrun.subsection>
+                            <x-slot name="title">Character Stats</x-slot>
+                            <livewire:shadowrun.character.condition-monitor />
+                        </x-shadowrun.subsection>
+
+                        <x-shadowrun.subsection>
+                            <x-slot name="title">Wounds</x-slot>
+                            <livewire:shadowrun.damage-track />
+                        </x-shadowrun.subsection>
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 
