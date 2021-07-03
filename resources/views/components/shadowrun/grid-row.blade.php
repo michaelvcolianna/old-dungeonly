@@ -1,7 +1,7 @@
-@props(['key', 'id', 'fields'])
+@props(['key', 'id', 'fields', 'last' => false])
 
 <div
-    class="grid grid-cols-86-10-pct gap-4pct items-center"
+    class="grid grid-cols-86-10-pct gap-4pct items-center {{ $last ? '' : 'border-b pb-8 mb-4' }}"
     wire:key="field-{{ $key }}-{{ $id }}"
 >
     <div>

@@ -2,7 +2,7 @@
     @if($character->{$this->getKey()})
         @foreach(array_keys($character->{$this->getKey()}) as $id)
             <x-shadowrun.grid-row
-                :key="$this->getKey()" :id="$id"
+                :key="$this->getKey()" :id="$id" :last="$loop->last"
                 :fields="$this->getArrayFields()"
             />
         @endforeach

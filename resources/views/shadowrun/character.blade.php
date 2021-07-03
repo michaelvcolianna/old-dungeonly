@@ -79,8 +79,68 @@
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 
-                {{-- Legacy character sheet --}}
-                <livewire:shadowrun.character />
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Contacts</x-slot>
+                        <livewire:shadowrun.character.contacts />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Ranged Weapons</x-slot>
+                        <livewire:shadowrun.character.ranged-weapons />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Melee Weapons</x-slot>
+                        <livewire:shadowrun.character.melee-weapons />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Armor</x-slot>
+                        <livewire:shadowrun.character.armor />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Cyberdeck</x-slot>
+                        <livewire:shadowrun.character.cyberdeck />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Augmentations</x-slot>
+                        <livewire:shadowrun.character.augmentations />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Spells/Preparations/Rituals/Complex Forms</x-slot>
+                        <livewire:shadowrun.character.spells-preparations-rituals-complex-forms />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Gear</x-slot>
+                        <livewire:shadowrun.character.gear />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Adept Powers or Other Abilities</x-slot>
+                        <livewire:shadowrun.character.adept-powers-or-other-abilities />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
             </div>
         </div>
     </div>
