@@ -35,7 +35,7 @@ abstract class Shadowrun extends Component
             // Array subfields
             if($field['db'] == 'json')
             {
-                $array = $this->getArrayConfig($name);
+                $array = $this->getArrayConfig();
                 $dot = ($array['repeats'])
                     ? '.*.'
                     : '.'
@@ -112,14 +112,23 @@ abstract class Shadowrun extends Component
     }
 
     /**
-     * Gets the array config for the specified field.
+     * Gets the array config for the component.
      *
-     * @param  string  $field
      * @return array
      */
-    public function getArrayConfig($field)
+    public function getArrayConfig()
     {
-        return config('shadowrun.arrays.' . $field) ?? [];
+        return config('shadowrun.arrays.' . $this->getKey()) ?? [];
+    }
+
+    /**
+     * Gets the array fields.
+     *
+     * @return array
+     */
+    public function getArrayFields()
+    {
+        return $this->getArrayConfig()['fields'];
     }
 
     /**
@@ -136,5 +145,56 @@ abstract class Shadowrun extends Component
             ;
 
         return 'shadowrun.' . $component;
+    }
+
+    /**
+     * Gets the type of component needed for a repeating field.
+     *
+     * @return string
+     */
+    public function getRepeaterComponent()
+    {
+        return 'shadowrun.' . $this->getKey();
+    }
+
+    /**
+     * Adds a row to an array.
+     */
+    public function addRow()
+    {
+        // Obtain the current array
+        $array = $this->character->{$this->getKey()} ?? [];
+
+        // Build a blank row
+        foreach(array_keys($this->getArrayFields()) as $name)
+        {
+            $new[$name] = null;
+        }
+
+        // Add the new blank row
+        $array[] = $new;
+
+        $this->character->update([
+            $this->getKey() => $array,
+        ]);
+    }
+
+    /**
+     * Removes a row from an array.
+     *
+     * @param  integer  $id
+     */
+    public function deleteRow($id)
+    {
+        // Obtain the current array
+        $array = $this->character->{$this->getKey()};
+
+        // Remove the row and reindex
+        unset($array[$id]);
+        $array = array_values($array);
+
+        $this->character->update([
+            $this->getKey() => $array,
+        ]);
     }
 }
