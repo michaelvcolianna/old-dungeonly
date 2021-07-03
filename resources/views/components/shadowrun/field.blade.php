@@ -1,6 +1,6 @@
-@props(['mt' => 2, 'name', 'label', 'hidden' => false])
+@props(['mt' => 2, 'name', 'label', 'hidden' => false, 'fieldclass' => null])
 
-<div class="mt-{{ $mt }} field--{{ $name }}" wire:key="field-{{ $name }}">
+<div class="mt-{{ $mt }} field--{{ $fieldclass ?? $name }}" wire:key="field-{{ $name }}">
     <x-jet-label
         for="{{ $name }}" value="{{ $label }}"
         class="{{ $hidden ? 'hidden' : '' }}"

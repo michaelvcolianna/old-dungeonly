@@ -9,6 +9,17 @@ use Livewire\Component;
 abstract class Shadowrun extends Component
 {
     /**
+     * Fields that prompt special handling.
+     *
+     * @var array
+     */
+    const SPECIAL_FIELDS = [
+        'primary_armor',
+        'primary_ranged_weapon',
+        'primary_melee_weapon',
+    ];
+
+    /**
      * The character.
      *
      * @var \App\Models\Shadowrunner
@@ -27,6 +38,25 @@ abstract class Shadowrun extends Component
     {
         $rules = [];
 
+        if(in_array($this->getKey(), self::SPECIAL_FIELDS))
+        {
+            $this->buildSpecialRules($rules);
+        }
+        else
+        {
+            $this->buildRegularRules($rules);
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Builds a standard set of rules from the config.
+     *
+     * @param  array  &$rules
+     */
+    protected function buildRegularRules(&$rules)
+    {
         foreach($this->getFieldConfig() as $name => $field)
         {
             // Base field names
@@ -41,14 +71,31 @@ abstract class Shadowrun extends Component
                     : '.'
                     ;
 
-                foreach($array['fields'] as $subname => $subfield)
+                foreach(array_keys($array['fields']) as $subname)
                 {
                     $rules['character.' . $name . $dot . $subname] = 'nullable';
                 }
             }
         }
+    }
 
-        return $rules;
+    /**
+     * Builds a set of rules for a special field from the config.
+     *
+     * @param  array  &$rules
+     */
+    protected function buildSpecialRules(&$rules)
+    {
+        $array = $this->getArrayConfig();
+        $dot = ($array['repeats'])
+            ? '.*.'
+            : '.'
+            ;
+
+        foreach(array_keys($array['fields']) as $subname)
+        {
+            $rules['character.' . $this->getKey() . $dot . $subname] = 'nullable';
+        }
     }
 
     /**
@@ -73,6 +120,12 @@ abstract class Shadowrun extends Component
         foreach(array_keys($this->getFieldConfig()) as $name)
         {
             $builder->addSelect($name);
+        }
+
+        // Add extra column for the special fields to the builder, if needed
+        if(in_array($this->getKey(), self::SPECIAL_FIELDS))
+        {
+            $builder->addSelect($this->getKey());
         }
 
         $this->character = $builder->first();
@@ -142,6 +195,22 @@ abstract class Shadowrun extends Component
         $component = ($field['db'] == 'string')
             ? 'field'
             : 'multiline'
+            ;
+
+        return 'shadowrun.' . $component;
+    }
+
+    /**
+     * Gets the type of component needed for an array field.
+     *
+     * @param  array  $field
+     * @return string
+     */
+    public function getArrayComponent($field)
+    {
+        $component = ($field['rows'])
+            ? 'multiline'
+            : 'field'
             ;
 
         return 'shadowrun.' . $component;
