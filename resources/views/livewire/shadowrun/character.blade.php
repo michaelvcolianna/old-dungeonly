@@ -129,7 +129,7 @@
                 @endif
             @endforeach
         </div>
-    </x-shadowrun.section> --}}
+    </x-shadowrun.section>
 
     <x-shadowrun.section>
         <x-slot name="title">Condition Monitor</x-slot>
@@ -142,7 +142,7 @@
                 />
             @endforeach
         </div>
-    </x-shadowrun.section>
+    </x-shadowrun.section> --}}
 
     <x-shadowrun.section>
         <x-slot name="title">Qualities</x-slot>

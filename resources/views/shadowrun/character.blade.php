@@ -65,6 +65,13 @@
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Condition Monitor</x-slot>
+                        <livewire:shadowrun.character.condition-monitor />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
                 {{-- Legacy character sheet --}}
                 <livewire:shadowrun.character />
             </div>
