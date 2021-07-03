@@ -142,7 +142,7 @@
                 />
             @endforeach
         </div>
-    </x-shadowrun.section> --}}
+    </x-shadowrun.section>
 
     <x-shadowrun.section>
         <x-slot name="title">Qualities</x-slot>
@@ -156,7 +156,7 @@
         <x-jet-button class="mt-2" wire:click="addQuality">
             Add Quality
         </x-jet-button>
-    </x-shadowrun.section>
+    </x-shadowrun.section> --}}
 
     <x-shadowrun.section>
         <x-slot name="title">Contacts</x-slot>
