@@ -1,6 +1,6 @@
 @props(['key', 'id', 'fields'])
 
-<tr class="row--{{ $key }}" wire:key="field-{{ $key }}-{{ $id }}">
+<tr class="row--{{ $key }}--{{ $id }}" wire:key="field-{{ $key }}-{{ $id }}">
     @foreach($fields as $name => $field)
         <td
             class="field--{{ $key }}--{{ $name }}"

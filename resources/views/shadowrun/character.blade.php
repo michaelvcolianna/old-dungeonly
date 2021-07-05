@@ -1,9 +1,13 @@
 <x-guest-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Shadowrun Character Sheet:
-            <livewire:shadowrun.character.header />
-        </h2>
+        <div class="md:flex flex-row items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Shadowrun Character Sheet:
+                <livewire:shadowrun.character.header />
+            </h2>
+
+            <livewire:shadowrun.quick-jump />
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -127,6 +131,13 @@
                     <x-shadowrun.details>
                         <x-slot name="title">Augmentations</x-slot>
                         <livewire:shadowrun.character.augmentations />
+                    </x-shadowrun.details>
+                </x-shadowrun.section>
+
+                <x-shadowrun.section>
+                    <x-shadowrun.details>
+                        <x-slot name="title">Vehicle</x-slot>
+                        <livewire:shadowrun.character.vehicle />
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 

@@ -30,3 +30,16 @@
         opacity: 0.25;
     }
 }
+
+@media (min-width: 768px)
+{
+    .quick-jump + span
+    {
+        padding: 0 0.8em;
+    }
+
+    .quick-jump:placeholder-shown + span
+    {
+        @apply text-gray-400;
+    }
+}

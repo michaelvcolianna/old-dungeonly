@@ -1,20 +1,8 @@
 <div class="group--damage-track">
-    <x-shadowrun.field
-        mt="2" name="physical_damage" :calculated="true"
-        label="Physical Damage Taken"
-    />
-
-    <x-shadowrun.field
-        mt="2" name="stun_damage" :calculated="true" label="Stun Damage Taken"
-    />
-
-    <x-shadowrun.field
-        mt="2" name="wound_modifier" :calculated="true" :disabled="true"
-        label="Wound Modifier"
-    />
-
-    <x-shadowrun.field
-        mt="2" name="overflow_damage" :calculated="true" :disabled="true"
-        label="Overflow Damage"
-    />
+    @foreach(config('shadowrun.damage_tracker') as $name => $field)
+        <x-shadowrun.field
+            mt="2" :name="$name" :label="$field['label']" :calculated="true"
+            :disabled="$field['disabled']"
+        />
+    @endforeach
 </div>

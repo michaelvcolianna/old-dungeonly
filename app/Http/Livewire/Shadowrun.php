@@ -12,17 +12,6 @@ abstract class Shadowrun extends Component
     use HasCharacter;
 
     /**
-     * Fields that prompt special handling.
-     *
-     * @var array
-     */
-    const SPECIAL_FIELDS = [
-        'primary_armor',
-        'primary_ranged_weapon',
-        'primary_melee_weapon',
-    ];
-
-    /**
      * Events the component listens for.
      *
      * @var array
@@ -43,7 +32,7 @@ abstract class Shadowrun extends Component
     {
         $rules = [];
 
-        if(in_array($this->getKey(), self::SPECIAL_FIELDS))
+        if(in_array($this->getKey(), config('shadowrun.core_combat')))
         {
             $this->buildSpecialRules($rules);
         }
@@ -119,7 +108,7 @@ abstract class Shadowrun extends Component
         }
 
         // Add extra column for the special fields to the builder, if needed
-        if(in_array($this->getKey(), self::SPECIAL_FIELDS))
+        if(in_array($this->getKey(), config('shadowrun.core_combat')))
         {
             $builder->addSelect($this->getKey());
         }

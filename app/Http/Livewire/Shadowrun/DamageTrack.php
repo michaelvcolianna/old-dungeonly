@@ -80,16 +80,6 @@ class DamageTrack extends Component
      */
     public function updated($propertyName)
     {
-        // Fix broken fields
-        if(!is_integer($this->physical_damage))
-        {
-            $this->physical_damage = 0;
-        }
-        if(!is_integer($this->stun_damage))
-        {
-            $this->stun_damage = 0;
-        }
-
         $this->calculateWounds();
     }
 
@@ -99,31 +89,44 @@ class DamageTrack extends Component
      */
     public function calculateWounds()
     {
+        // Get fields
+        $physical_damage_track = $this->character->physical_damage_track;
+        $stun_damage_track = $this->character->stun_damage_track;
+        $overflow = $this->character->overflow;
+        $physical_damage = empty($this->physical_damage)
+            ? 0
+            : $this->physical_damage
+            ;
+        $stun_damage = empty($this->stun_damage)
+            ? 0
+            : $this->stun_damage
+            ;
+
         // Calculate overflow first
-        $physical_overflow = ($this->physical_damage > $this->character->physical_damage_track)
-            ? ($this->physical_damage - $this->character->physical_damage_track)
+        $physical_overflow = ($physical_damage > $physical_damage_track)
+            ? ($physical_damage - $physical_damage_track)
             : 0
             ;
-        $stun_overflow = ($this->stun_damage > $this->character->stun_damage_track)
-            ? ($this->stun_damage - $this->character->stun_damage_track)
+        $stun_overflow = ($stun_damage > $stun_damage_track)
+            ? ($stun_damage - $stun_damage_track)
             : 0
             ;
-        $overflow = ($physical_overflow + $stun_overflow);
+        $overflow_damage = ($physical_overflow + $stun_overflow);
 
         // Update the overflow damage as needed
-        $this->overflow_damage = ($overflow > $this->character->overflow)
+        $this->overflow_damage = ($overflow_damage > $overflow)
             ? 'Ya Dead'
-            : $overflow
+            : $overflow_damage
             ;
 
         // Limit to their tracks
-        $physical_damage = ($this->physical_damage > $this->character->physical_damage_track)
-            ? $this->character->physical_damage_track
-            : $this->physical_damage
+        $physical_damage = ($physical_damage > $physical_damage_track)
+            ? $physical_damage_track
+            : $physical_damage
             ;
-        $stun_damage = ($this->stun_damage > $this->character->stun_damage_track)
-            ? $this->character->stun_damage_track
-            : $this->stun_damage
+        $stun_damage = ($stun_damage > $stun_damage_track)
+            ? $stun_damage_track
+            : $stun_damage
             ;
 
         // Calculate the modifer

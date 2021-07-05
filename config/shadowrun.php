@@ -13,6 +13,15 @@ return [
     |
     */
 
+    'groups' => [
+        'overview' => 'Overview',
+        'personal_data' => 'Personal Data',
+        'attributes' => 'Attributes',
+        'ids_lifestyles_currency' => 'IDs/Lifestyles/Currency',
+        'core_combat_info' => 'Core Combat Info',
+        'condition_monitor' => 'Condition Monitor',
+    ],
+
     'fields' => [
         'overview' => [
             'character' => [
@@ -176,6 +185,7 @@ return [
         'skills' => [
             'skills' => [
                 'db' => 'json',
+                'label' => 'Skills',
             ],
         ],
         'ids_lifestyles_currency' => [
@@ -200,12 +210,15 @@ return [
         'core_combat_info' => [
             'primary_armor' => [
                 'db' => 'json',
+                'label' => 'Primary Armor',
             ],
             'primary_ranged_weapon' => [
                 'db' => 'json',
+                'label' => 'Primary Ranged Weapon',
             ],
             'primary_melee_weapon' => [
                 'db' => 'json',
+                'label' => 'Primary Melee Weapon',
             ],
         ],
         'condition_monitor' => [
@@ -225,56 +238,67 @@ return [
         'qualities' => [
             'qualities' => [
                 'db' => 'json',
+                'label' => 'Qualities',
             ],
         ],
         'contacts' => [
             'contacts' => [
                 'db' => 'json',
+                'label' => 'Contacts',
             ],
         ],
         'ranged_weapons' => [
             'ranged_weapons' => [
                 'db' => 'json',
+                'label' => 'Ranged Weapons',
             ],
         ],
         'melee_weapons' => [
             'melee_weapons' => [
                 'db' => 'json',
+                'label' => 'Melee Weapons',
             ],
         ],
         'armor' => [
             'armor' => [
                 'db' => 'json',
+                'label' => 'Armor',
             ],
         ],
         'cyberdeck' => [
             'cyberdeck' => [
                 'db' => 'json',
+                'label' => 'Cyberdeck',
             ],
         ],
         'augmentations' => [
             'augmentations' => [
                 'db' => 'json',
+                'label' => 'Augmentations',
             ],
         ],
         'vehicle' => [
             'vehicle' => [
                 'db' => 'json',
+                'label' => 'Vehicle',
             ],
         ],
         'gear' => [
             'gear' => [
                 'db' => 'json',
+                'label' => 'Gear',
             ],
         ],
         'spells_preparations_rituals_complex_forms' => [
             'spells_preparations_rituals_complex_forms' => [
                 'db' => 'json',
+                'label' => 'Spells/Preparations/Rituals/Complex Forms',
             ],
         ],
         'adept_powers_or_other_abilities' => [
             'adept_powers_or_other_abilities' => [
                 'db' => 'json',
+                'label' => 'Adept Powers or Other Abilities',
             ],
         ],
     ],
@@ -648,6 +672,64 @@ return [
                     'label' => 'Notes',
                 ],
             ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Core Combat Info Fields List
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the fields in the special core combat group.
+    |
+    */
+    'core_combat' => [
+        'primary_armor',
+        'primary_ranged_weapon',
+        'primary_melee_weapon',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Special Fields List
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the fields that are special overall.
+    |
+    */
+    'special' => [
+        'primary_armor',
+        'primary_ranged_weapon',
+        'primary_melee_weapon',
+        'cyberdeck',
+        'vehicle',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Damage Tracker Field Specifications
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the fields used in the damage tracker component and
+    | its associated view.
+    |
+    */
+    'damage_tracker' => [
+        'physical_damage' => [
+            'label' => 'Physical Damage Taken',
+            'disabled' => false,
+        ],
+        'stun_damage' => [
+            'label' => 'Stun Damage Taken',
+            'disabled' => false,
+        ],
+        'wound_modifier' => [
+            'label' => 'Wound Modifier',
+            'disabled' => true,
+        ],
+        'overflow_damage' => [
+            'label' => 'Overflow Damage',
+            'disabled' => true,
         ],
     ],
 
