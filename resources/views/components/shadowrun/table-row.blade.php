@@ -18,7 +18,7 @@
         wire:key="field-{{ $key }}-{{ $id }}-delete"
     >
         <button
-            class="flex items-center justify-center text-gray-800"
+            class="flex items-center justify-center text-gray-800 w-full h-10"
             wire:click="deleteRow({{ $id }})"
         >
             <x-shadowrun.trash />

@@ -52,20 +52,22 @@
                     <x-shadowrun.details>
                         <x-slot name="title">Core Combat Info</x-slot>
 
-                        <x-shadowrun.subsection>
-                            <x-slot name="title">Primary Armor</x-slot>
-                            <livewire:shadowrun.character.primary-armor />
-                        </x-shadowrun.subsection>
+                        <div class="group--core_combat_info">
+                            <x-shadowrun.subsection>
+                                <x-slot name="title">Primary Armor</x-slot>
+                                <livewire:shadowrun.character.primary-armor />
+                            </x-shadowrun.subsection>
 
-                        <x-shadowrun.subsection>
-                            <x-slot name="title">Primary Ranged Weapon</x-slot>
-                            <livewire:shadowrun.character.primary-ranged-weapon />
-                        </x-shadowrun.subsection>
+                            <x-shadowrun.subsection>
+                                <x-slot name="title">Primary Ranged Weapon</x-slot>
+                                <livewire:shadowrun.character.primary-ranged-weapon />
+                            </x-shadowrun.subsection>
 
-                        <x-shadowrun.subsection>
-                            <x-slot name="title">Primary Melee Weapon</x-slot>
-                            <livewire:shadowrun.character.primary-melee-weapon />
-                        </x-shadowrun.subsection>
+                            <x-shadowrun.subsection>
+                                <x-slot name="title">Primary Melee Weapon</x-slot>
+                                <livewire:shadowrun.character.primary-melee-weapon />
+                            </x-shadowrun.subsection>
+                        </div>
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 

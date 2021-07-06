@@ -43,3 +43,124 @@
         @apply text-gray-400;
     }
 }
+
+.group--personal_data
+{
+    @apply grid grid-cols-2 gap-4 pt-4 md:grid-cols-4;
+}
+
+.group--personal_data > div,
+.group--attributes > div
+{
+    @apply mt-0;
+}
+
+.group--personal_data [class*="--name_primary_alias"],
+.group--personal_data [class*="--metatype"],
+.group--personal_data [class*="--ethnicity"]
+.group--
+{
+    @apply col-span-2;
+}
+
+.group--personal_data [class*="--name_primary_alias"]
+{
+    @apply md:col-span-4;
+}
+
+.group--personal_data [class*="--misc"]
+{
+    @apply md:col-span-3;
+}
+
+.group--attributes
+{
+    @apply grid grid-cols-3 gap-4 pt-4 md:grid-cols-6;
+}
+
+.group--attributes [class*="--magic_resonance"]
+{
+    @apply col-span-2 md:col-span-1;
+}
+
+.group--attributes [class*="--initiative"],
+.group--attributes [class*="--matrix_initiative"],
+.group--attributes [class*="--astral_initiative"],
+.group--attributes [class*="--movement"]
+{
+    @apply col-span-3 md:col-span-2;
+}
+
+.group--attributes [class*="--physical_limit"],
+.group--attributes [class*="--mental_limit"],
+.group--attributes [class*="--social_limit"]
+{
+    @apply md:col-span-2;
+}
+
+/* 64 18 10 */
+/* 86 10 */
+.group--skills table
+{
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+.header-skill_name
+{
+    width: 64%;
+}
+
+.header-skill_rating
+{
+    width: 18%;
+}
+
+.header-delete
+{
+    width: 10%;
+}
+
+.group--ids_lifestyles_currency
+{
+    @apply md:grid grid-cols-2 gap-4;
+}
+
+.group--ids_lifestyles_currency > div
+{
+    @apply md:mt-0;
+}
+
+.group--ids_lifestyles_currency [class*="--fake_ids_related_lifestyles_funds_licenses"]
+{
+    @apply col-span-2;
+}
+
+.group--core_combat_info
+{
+    @apply md:grid grid-cols-3 gap-4;
+}
+
+.group--primary_armor
+{
+    @apply grid grid-cols-3 gap-4 md:block;
+}
+
+.group--primary_armor [class*="--name"]
+{
+    @apply col-span-2;
+}
+
+.group--primary_ranged_weapon,
+.group--primary_melee_weapon
+{
+    @apply grid grid-cols-2 gap-4;
+}
+
+.group--primary_ranged_weapon [class*="--name"],
+.group--primary_ranged_weapon [class*="--accuracy"],
+.group--primary_melee_weapon [class*="--name"],
+.group--primary_melee_weapon [class*="--accuracy"]
+{
+    @apply col-span-2;
+}
