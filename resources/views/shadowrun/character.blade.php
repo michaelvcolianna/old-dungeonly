@@ -75,15 +75,17 @@
                     <x-shadowrun.details>
                         <x-slot name="title">Condition Monitor</x-slot>
 
-                        <x-shadowrun.subsection>
-                            <x-slot name="title">Character Stats</x-slot>
-                            <livewire:shadowrun.character.condition-monitor />
-                        </x-shadowrun.subsection>
+                        <div class="group--condition_monitors">
+                            <x-shadowrun.subsection>
+                                <x-slot name="title">Character Stats</x-slot>
+                                <livewire:shadowrun.character.condition-monitor />
+                            </x-shadowrun.subsection>
 
-                        <x-shadowrun.subsection>
-                            <x-slot name="title">Wounds</x-slot>
-                            <livewire:shadowrun.damage-track />
-                        </x-shadowrun.subsection>
+                            <x-shadowrun.subsection>
+                                <x-slot name="title">Wounds</x-slot>
+                                <livewire:shadowrun.damage-track />
+                            </x-shadowrun.subsection>
+                        </div>
                     </x-shadowrun.details>
                 </x-shadowrun.section>
 

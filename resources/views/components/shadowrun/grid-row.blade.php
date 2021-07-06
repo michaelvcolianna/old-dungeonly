@@ -1,10 +1,10 @@
 @props(['key', 'id', 'fields', 'last' => false])
 
 <div
-    class="grid grid-cols-86-10-pct gap-4pct items-center {{ $last ? '' : 'border-b pb-8 mb-4' }} row--{{ $key }}--{{ $id }}"
+    class="grid grid-cols-86-10-pct gap-4pct items-center pl-6 mb-2 grid-row relative row--{{ $key }}--{{ $id }}"
     wire:key="field-{{ $key }}-{{ $id }}"
 >
-    <div>
+    <div class="grid--row">
         @foreach($fields as $name => $field)
             <x-dynamic-component
                 :mt="2" :label="$field['label']" :rows="$field['rows'] ?? null"

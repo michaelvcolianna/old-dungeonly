@@ -546,13 +546,13 @@ return [
                     'rows' => false,
                     'label' => 'Firewall',
                 ],
-                'programs' => [
-                    'rows' => 3,
-                    'label' => 'Programs',
-                ],
                 'matrix_condition_monitor' => [
                     'rows' => false,
                     'label' => 'Matrix Condition Monitor',
+                ],
+                'programs' => [
+                    'rows' => 3,
+                    'label' => 'Programs',
                 ],
             ],
         ],
@@ -567,13 +567,13 @@ return [
                     'rows' => false,
                     'label' => 'Rating',
                 ],
-                'notes' => [
-                    'rows' => 2,
-                    'label' => 'Notes',
-                ],
                 'essence' => [
                     'rows' => false,
                     'label' => 'Essence',
+                ],
+                'notes' => [
+                    'rows' => 2,
+                    'label' => 'Notes',
                 ],
             ],
         ],

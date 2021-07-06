@@ -44,53 +44,186 @@
     }
 }
 
-.group--personal_data
+/* tw::grid */
+.group--personal_data,
+.group--attributes,
+.group--primary_armor,
+.group--primary_ranged_weapon,
+.group--primary_melee_weapon,
+.group--condition_monitor,
+.group--damage-track,
+.group--cyberdeck,
+.group--vehicle,
+.grid--row
 {
-    @apply grid grid-cols-2 gap-4 pt-4 md:grid-cols-4;
+    @apply grid;
 }
 
+/* tw::grid-cols-1 */
+.grid--row
+{
+    @apply grid-cols-1;
+}
+
+/* tw::grid-cols-2 */
+.group--personal_data,
+.group--ids_lifestyles_currency,
+.group--primary_ranged_weapon,
+.group--primary_melee_weapon,
+.group--condition_monitors,
+.group--condition_monitor,
+.group--damage-track,
+.group--cyberdeck,
+.group--vehicle,
+.group--grid,
+.group--ranged_weapons .grid--row
+.group--melee_weapons .grid--row,
+.group--augmentations .grid--row
+{
+    @apply grid-cols-2;
+}
+
+/* tw::grid-cols-3 */
+.group--attributes,
+.group--core_combat_info,
+.group--primary_armor,
+.group--contacts .grid--row,
+.group--spells_preparations_rituals_complex_forms .grid--row
+{
+    @apply grid-cols-3;
+}
+
+/* tw::gap-4 */
+.group--personal_data,
+.group--attributes,
+.group--ids_lifestyles_currency,
+.group--core_combat_info,
+.group--primary_armor,
+.group--primary_ranged_weapon,
+.group--primary_melee_weapon,
+.group--condition_monitors,
+.group--condition_monitor,
+.group--damage-track,
+.group--cyberdeck,
+.group--vehicle,
+.group--grid,
+.grid--row
+{
+    @apply gap-4;
+}
+
+/* tw::pt-4 */
+.group--personal_data,
+.group--attributes,
+.group--condition_monitor
+{
+    @apply pt-4;
+}
+
+/* tw::mt-0 */
 .group--personal_data > div,
-.group--attributes > div
+.group--attributes > div,
+.group--condition_monitor > div
 {
     @apply mt-0;
 }
 
+/* tw::col-span-2 */
 .group--personal_data [class*="--name_primary_alias"],
 .group--personal_data [class*="--metatype"],
-.group--personal_data [class*="--ethnicity"]
-.group--
+.group--personal_data [class*="--ethnicity"],
+.group--attributes [class*="--magic_resonance"],
+.group--ids_lifestyles_currency [class*="--fake_ids_related_lifestyles_funds_licenses"],
+.group--primary_armor [class*="--name"],
+.group--primary_ranged_weapon [class*="--name"],
+.group--primary_ranged_weapon [class*="--accuracy"],
+.group--primary_melee_weapon [class*="--name"],
+.group--primary_melee_weapon [class*="--accuracy"],
+.group--ranged_weapons [class*="--name"],
+.group--melee_weapons [class*="--name"],
+.group--cyberdeck [class*="--name"],
+.group--cyberdeck [class*="--programs"],
+.group--vehicle [class*="--name"],
+.group--vehicle [class*="--notes"],
+.group--augmentations [class*="--name"],
+.group--augmentations [class*="--notes"]
 {
     @apply col-span-2;
 }
 
-.group--personal_data [class*="--name_primary_alias"]
-{
-    @apply md:col-span-4;
-}
-
-.group--personal_data [class*="--misc"]
-{
-    @apply md:col-span-3;
-}
-
-.group--attributes
-{
-    @apply grid grid-cols-3 gap-4 pt-4 md:grid-cols-6;
-}
-
-.group--attributes [class*="--magic_resonance"]
-{
-    @apply col-span-2 md:col-span-1;
-}
-
+/* tw::col-span-3 */
 .group--attributes [class*="--initiative"],
 .group--attributes [class*="--matrix_initiative"],
 .group--attributes [class*="--astral_initiative"],
-.group--attributes [class*="--movement"]
+.group--attributes [class*="--movement"],
+.group--contacts [class*="--name"],
+.group--contacts [class*="--notes"],
+.group--spells_preparations_rituals_complex_forms [class*="--name"],
+.group--spells_preparations_rituals_complex_forms [class*="--type_target"]
 {
-    @apply col-span-3 md:col-span-2;
+    @apply col-span-3;
 }
 
+/* tw::md:block */
+.group--primary_armor
+{
+    @apply md:block;
+}
+
+/* tw::md:grid */
+.group--ids_lifestyles_currency,
+.group--core_combat_info,
+.group--condition_monitors,
+.group--grid
+{
+    @apply md:grid;
+}
+
+/* tw::md:grid-cols-3 */
+.group--cyberdeck,
+.group--vehicle
+{
+    @apply md:grid-cols-3;
+}
+
+/* tw::md:grid-cols-4 */
+.group--personal_data
+{
+    @apply md:grid-cols-4;
+}
+
+/* tw::md:grid-cols-6 */
+.group--attributes
+{
+    @apply md:grid-cols-6;
+}
+
+/* tw::md:mt-0 */
+.group--ids_lifestyles_currency > div
+{
+    @apply md:mt-0;
+}
+
+/* tw::pt-2 */
+.group--condition_monitor,
+.group--condition_monitor [class*="--overflow"]
+{
+    @apply md:pt-2;
+}
+
+/* tw::md:col-span-1 */
+.group--attributes [class*="--magic_resonance"],
+.group--primary_armor [class*="--name"],
+.group--primary_armor [class*="--rating"]
+{
+    @apply md:col-span-1;
+}
+
+/* tw::md:col-span-2 */
+.group--attributes [class*="--initiative"],
+.group--attributes [class*="--matrix_initiative"],
+.group--attributes [class*="--astral_initiative"],
+.group--attributes [class*="--movement"],
 .group--attributes [class*="--physical_limit"],
 .group--attributes [class*="--mental_limit"],
 .group--attributes [class*="--social_limit"]
@@ -98,9 +231,27 @@
     @apply md:col-span-2;
 }
 
-/* 64 18 10 */
-/* 86 10 */
-.group--skills table
+/* tw::md:col-span-3 */
+.group--personal_data [class*="--misc"],
+.group--cyberdeck [class*="--name"],
+.group--cyberdeck [class*="--programs"],
+.group--vehicle [class*="--name"],
+.group--vehicle [class*="--notes"]
+{
+    @apply md:col-span-3;
+}
+
+/* tw::md:col-span-4 */
+.group--personal_data [class*="--name_primary_alias"]
+{
+    @apply md:col-span-4;
+}
+
+/**
+ * Tables
+ */
+.group--skills table,
+.group--gear table
 {
     border-spacing: 10px;
     border-collapse: separate;
@@ -121,46 +272,13 @@
     width: 10%;
 }
 
-.group--ids_lifestyles_currency
+/**
+ * Grid rows
+ */
+.grid-row:before
 {
-    @apply md:grid grid-cols-2 gap-4;
-}
-
-.group--ids_lifestyles_currency > div
-{
-    @apply md:mt-0;
-}
-
-.group--ids_lifestyles_currency [class*="--fake_ids_related_lifestyles_funds_licenses"]
-{
-    @apply col-span-2;
-}
-
-.group--core_combat_info
-{
-    @apply md:grid grid-cols-3 gap-4;
-}
-
-.group--primary_armor
-{
-    @apply grid grid-cols-3 gap-4 md:block;
-}
-
-.group--primary_armor [class*="--name"]
-{
-    @apply col-span-2;
-}
-
-.group--primary_ranged_weapon,
-.group--primary_melee_weapon
-{
-    @apply grid grid-cols-2 gap-4;
-}
-
-.group--primary_ranged_weapon [class*="--name"],
-.group--primary_ranged_weapon [class*="--accuracy"],
-.group--primary_melee_weapon [class*="--name"],
-.group--primary_melee_weapon [class*="--accuracy"]
-{
-    @apply col-span-2;
+    @apply absolute bg-gray-400 bottom-0;
+    content: '';
+    top: 32px;
+    width: 5px;
 }
