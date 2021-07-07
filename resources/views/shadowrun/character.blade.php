@@ -1,10 +1,12 @@
 <x-guest-layout>
     <x-slot name="header">
-        <div class="md:flex flex-row items-center justify-between">
+        <div class="flex flex-row flex-wrap items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Shadowrun Character Sheet:
                 <livewire:shadowrun.character.header />
             </h2>
+
+            <livewire:shadowrun.dice-roller />
 
             <livewire:shadowrun.quick-jump />
         </div>
