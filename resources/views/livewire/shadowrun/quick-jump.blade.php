@@ -1,4 +1,4 @@
-<div class="w-full md:w-1/4">
+<div class="w-full md:w-1/3">
     <div
         x-data="{
             open: @entangle('show_results'),
