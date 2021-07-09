@@ -1,13 +1,12 @@
 <div class="text-gray-800">
     <div
-        class=""
         x-data="{
             open: @entangle('show_window'),
         }"
     >
         <button
-            type="button" class="h-12 w-12 flex justify-center items-center"
-            wire:click="$toggle('show_window')"
+            class="flex h-12 items-center justify-center w-12"
+            type="button" wire:click="$toggle('show_window')"
         >
             <span class="fixed invisible -z-1">Roll Dice</span>
             <x-shadowrun.d6 />
@@ -18,12 +17,17 @@
             x-show="open" x-on:click.away="open = false"
         >
             <div
-                class="p-4 bg-white border-b shadow opacity-0"
+                class="bg-white border-b shadow opacity-0 p-4"
                 :class="{
                     'opacity-100' : {{ $show_window ? 'true' : 'false' }},
                 }"
             >
-                <div class="max-w-7xl mx-auto md:px-8 md:flex flex-row justify-start items-end">
+                <div
+                    class="
+                        flex-row items-end justify-start max-w-7xl mx-auto
+                        md:flex md:px-8
+                    "
+                >
                     <div>
                         <x-jet-label for="dice" value="Number of dice" />
                         <x-jet-input
@@ -41,35 +45,43 @@
                 </div>
 
                 @if($results)
-                    <div class="max-w-7xl mx-auto md:px-8 py-2 md:py-4 bg-white">
-                        <table class="flex md:table md:table-fixed w-full">
+                    <div
+                        class="bg-white max-w-7xl mx-auto py-2 md:px-8 md:py-4"
+                    >
+                        <table class="flex w-full md:table md:table-fixed">
                             <thead>
                                 <tr>
                                     <th
-                                        class="w-1/5 block pr-4 md:p-0 md:table-cell"
+                                        class="
+                                            block pr-4 w-1/5 md:p-0
+                                            md:table-cell
+                                        "
                                     >
                                         Dice
                                     </th>
 
                                     <th
-                                        class="w-1/5 block pr-4 md:p-0 md:table-cell"
+                                        class="
+                                            block pr-4 w-1/5 md:p-0
+                                            md:table-cell
+                                        "
                                     >
                                         Successes
                                     </th>
 
                                     <th class="
-                                        w-1/5 block pr-4 md:p-0 md:table-cell
-                                        @if($this->isRollCriticallyGlitched())
-                                            text-red-500
-                                        @elseif($this->isRollGlitched())
-                                            text-yellow-500
-                                        @endif
-                                    ">
+                                        block pr-4 w-1/5 md:p-0 md:table-cell
+                                        {{ $this->cellClass() }}
+                                        "
+                                    >
                                         Glitches
                                     </th>
 
                                     <th
-                                        class="w-2/5 block pr-4 md:p-0 md:table-cell"
+                                        class="
+                                            block pr-4 w-2/5 md:p-0
+                                            md:table-cell
+                                        "
                                     >
                                         Sum
                                     </th>
@@ -78,26 +90,22 @@
 
                             <tbody>
                                 <tr class="md:border md:text-center">
-                                    <td class="pl-4 md:p-4 block md:table-cell">
+                                    <td class="block pl-4 md:p-4 md:table-cell">
                                         {{ count($results) }}
                                     </td>
 
-                                    <td class="pl-4 md:p-4 block md:table-cell">
+                                    <td class="block pl-4 md:p-4 md:table-cell">
                                         {{ $success }}
                                     </td>
 
                                     <td class="
-                                        pl-4 md:p-4 block md:table-cell
-                                        @if($this->isRollCriticallyGlitched())
-                                            text-red-500
-                                        @elseif($this->isRollGlitched())
-                                            text-yellow-500
-                                        @endif
+                                        block pl-4 md:p-4 md:table-cell
+                                        {{ $this->cellClass() }}
                                     ">
                                         {{ $glitch }}
                                     </td>
 
-                                    <td class="pl-4 md:p-4 block md:table-cell">
+                                    <td class="block pl-4 md:p-4 md:table-cell">
                                         {{ $total }}
                                     </td>
                                 </tr>
@@ -105,7 +113,12 @@
                         </table>
                     </div>
 
-                    <div class="max-w-7xl mx-auto md:px-8 px-0 sm:px-20 bg-white md:flex justify-end">
+                    <div
+                        class="
+                            bg-white justify-end max-w-7xl mx-auto px-0 sm:px-20
+                            md:flex md:px-8
+                        "
+                    >
                         @if(!$limit && !$reroll && !$this->isRollGlitched())
                             <x-jet-button wire:click="secondChance">
                                 Second Chance
@@ -118,7 +131,7 @@
 
                         @if($this->canRollEdge() && !$reroll)
                             <x-jet-button
-                                wire:click="pushTheLimit" class="ml-2"
+                                class="ml-2" wire:click="pushTheLimit"
                             >
                                 Push the Limit
                             </x-jet-button>
@@ -130,15 +143,23 @@
                     </div>
 
                     <div
-                        class="max-w-7xl mx-auto md:px-8 px-0 pt-4 sm:px-20 bg-white grid grid-cols-5 md:grid-cols-10 gap-4"
+                        class="
+                            bg-white gap-4 grid grid-cols-5 max-w-7xl mx-auto
+                            px-0 pt-4 sm:px-20 md:grid-cols-10 md:px-8
+                        "
                     >
                         @foreach($results as $key => $result)
-                            <div wire:key="result-{{ $key }}" class="
-                                border text-center h-12 flex items-center justify-center die
-                                {{ ($result['edge']) ? 'border-green-400' : '' }}
-                                {{ ($result['second']) ? 'second' : '' }}
-                                {{ ($result['limit']) ? 'limit' : '' }}
-                            ">
+                            <div
+                                class="
+                                    die border flex h-12 items-center
+                                    justify-center text-center
+                                "
+                                :class="{
+                                    'border-green-400': {{ $result['edge'] ? 'true' : 'false' }},
+                                    'limit': {{ $result['limit'] ? 'true' : 'false' }},
+                                    'second': {{ $result['second'] ? 'true' : 'false' }}
+                                }"
+                            >
                                 {{ $result['roll'] }}
                             </div>
                         @endforeach

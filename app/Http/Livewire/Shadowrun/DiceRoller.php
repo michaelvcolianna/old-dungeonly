@@ -283,4 +283,24 @@ class DiceRoller extends Component
             $this->limit = true;
         }
     }
+
+    /**
+     * Outputs a class for a table cell.
+     *
+     * @return string
+     */
+    public function cellClass()
+    {
+        if($this->isRollCriticallyGlitched())
+        {
+            return 'text-red-500';
+        }
+
+        if($this->isRollGlitched())
+        {
+            return 'text-yellow-500';
+        }
+
+        return null;
+    }
 }
