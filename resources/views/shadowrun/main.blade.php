@@ -1,6 +1,22 @@
 <x-guest-layout>
     <x-slot name="header">
-        <div class="flex flex-row flex-wrap items-center justify-between">
+        <div
+            class="
+                flex flex-row flex-wrap items-center justify-between
+                text-gray-500
+            "
+        >
+            <a
+                class="
+                    block flex flex-row items-center mb-2 w-full md:mb-0
+                    md:w-auto
+                "
+                href="{{ route('dashboard') }}"
+            >
+                <x-chevron-left />
+                <span class="ml-2 md:hidden">Back to Dashboard</span>
+            </a>
+
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Shadowrun Character Sheet:
                 <livewire:shadowrun.character.header />

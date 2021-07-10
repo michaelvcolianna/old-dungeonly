@@ -17,6 +17,8 @@ class Shadowrunner extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
+        'team_id',
         'skills',
         'primary_armor',
         'primary_ranged_weapon',
@@ -54,6 +56,14 @@ class Shadowrunner extends Model
         'gear' => 'array',
         'adept_powers_or_other_abilities' => 'array',
     ];
+
+    /**
+     * Get the team that owns the Shadowrunner.
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
     /**
      * Get the user that owns the Shadowrunner.

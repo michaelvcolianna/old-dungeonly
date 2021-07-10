@@ -16,6 +16,7 @@ class CreateShadowrunnersTable extends Migration
         Schema::create('shadowrunners', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('team_id');
 
             foreach(config('shadowrun.fields') as $group)
             {

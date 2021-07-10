@@ -49,9 +49,12 @@ window.scrollAndAccountForHeader = (key) => {
 /**
  * Search field focus using keyboard.
  */
-document.onkeydown = (event) => {
-    if(event.key === 'Escape' || event.key === 'Esc')
-    {
-        el_quickjump.focus();
-    }
-};
+if(el_quickjump)
+{
+    document.onkeydown = (event) => {
+        if(event.key === 'Escape' || event.key === 'Esc')
+        {
+            el_quickjump.focus();
+        }
+    };
+}

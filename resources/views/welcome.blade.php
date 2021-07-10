@@ -10,26 +10,39 @@
 
         <div class="flex items-center justify-end mt-4">
             @auth
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
-                    {{ __('Go to Dashboard') }}
+                <a
+                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                    href="{{ route('dashboard') }}"
+                >
+                    Go to Dashboard
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-jet-button class="ml-4">
-                        {{ __('Log out') }}
+                        Log out
                     </x-jet-button>
                 </form>
             @else
                 @if(Route::has('register'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                        {{ __('No account?') }}
+                    <a
+                        class="
+                            underline text-sm text-gray-600 hover:text-gray-900
+                        "
+                        href="{{ route('register') }}"
+                    >
+                        No account?
                     </a>
                 @endif
 
-                <a class="ml-4 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                <a
+                    class="
+                        ml-4 underline text-sm text-gray-600 hover:text-gray-900
+                    "
+                    href="{{ route('login') }}"
+                >
+                    Already registered?
                 </a>
             @endauth
         </div>
