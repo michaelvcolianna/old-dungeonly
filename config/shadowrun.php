@@ -733,4 +733,187 @@ return [
         ],
     ],
 
+    /*
+     |-------------------------------------------------------------------------
+     | Skill Group Specifications
+     |-------------------------------------------------------------------------
+     |
+     | This options defines the skill groups and their sub-skills. p90
+     |
+     */
+    'skill_groups' => [
+        //
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Skill Specifications
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the skills, whether they can default, their linked
+    | attributes, and their specializations.
+    |
+    */
+    'skills' => [
+        'archery' => [
+            'label' => 'Archery',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'bow' => 'Bow',
+                'crossbow' => 'Crossbow',
+                'nonstandard_ammunition' => 'Non-Standard Ammunition',
+                'slingshot' => 'Slingshot',
+            ],
+        ],
+        'automatics' => [
+            'label' => 'Automatics',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'assault_rifles' => 'Assault Rifles',
+                'cyber_implant' => 'Cyber-Implant',
+                'machine_pistols' => 'Machine Pistols',
+                'submachine_guns' => 'Submachine Guns',
+            ],
+        ],
+        'blades' => [
+            'label' => 'Blades',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'axes' => 'Axes',
+                'knives' => 'Knives',
+                'swords' => 'Swords',
+                'parrying' => 'Parrying',
+            ],
+        ],
+        'clubs' => [
+            'label' => 'Clubs',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'batons' => 'Batons',
+                'hammers' => 'Hammers',
+                'saps' => 'Saps',
+                'staves' => 'Staves',
+                'parrying' => 'Parrying',
+            ],
+        ],
+        'exotic_ranged_weapon' => [
+            'label' => 'Exotic Ranged Weapon',
+            'attribute' => 'agility',
+            'default' => false,
+            'specializations' => [],
+        ],
+        'heavy_weapons' => [
+            'label' => 'Heavy Weapons',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'assault_cannons' => 'Assault Cannons',
+                'grenade_launchers' => 'Grenade Launchers',
+                'guided_missiles' => 'Guided Missiles',
+                'machine_guns' => 'Machine Guns',
+                'rocket_launchers' => 'Rocket Launchers',
+            ],
+        ],
+        'longarms' => [
+            'label' => 'Longarms',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'extended_range_shots' => 'Extended-Range Shots',
+                'long_range_shots' => 'Long-Range Shots',
+                'shotguns' => 'Shotguns',
+                'sniper_rifles' => 'Sniper Rifles',
+            ],
+        ],
+        'pistols' => [
+            'label' => 'Pistols',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'holdouts' => 'Holdouts',
+                'revolvers' => 'Revolvers',
+                'semi_automatics' => 'Semi-Automatics',
+                'tasers' => 'Tasers',
+            ],
+        ],
+        'throwing_weapons' => [
+            'label' => 'Throwing Weapons',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'aerodynamic' => 'Aerodynamic',
+                'blades' => 'Blades',
+                'non_aerodynamic' => 'Non-Aerodynamic',
+            ],
+        ],
+        'unarmed_combat' => [
+            'label' => 'Unarmed Combat',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'blocking' => 'Blocking',
+                'cyber_implants' => 'Cyber Implants',
+                'subduing_combat' => 'Subduing Combat',
+                'martial_art' => 'Martial Art',
+            ],
+        ],
+        'disguise' => [
+            'label' => 'Disguise',
+            'attribute' => 'intution',
+            'default' => true,
+            'specializations' => [
+                'camouflage' => 'Camouflage',
+                'cosmetic' => 'Cosmetic',
+                'theatrical' => 'Theatrical',
+                'trideo_video' => 'Trideo & Video',
+            ],
+        ],
+        'diving' => [
+            'label' => 'Diving',
+            'attribute' => 'body',
+            'default' => true,
+            'specializations' => [
+                'apparatus' => 'By apparatus',
+                'condition' => 'By condition',
+                'controlled_hyperventilation' => 'Controlled Hyperventilation',
+            ],
+        ],
+        'escape_artist' => [
+            'label' => 'Escape Artists',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                'restraint' => 'By restraint',
+                'contortionism' => 'Contortionism',
+            ],
+        ],
+        'free_fall' => [
+            'label' => 'Free-Fall',
+            'attribute' => 'body',
+            'default' => true,
+            'specializations' => [
+                'base_jumping' => 'BASE Jumping',
+                'break_fall' => 'Break-Fall',
+                'bungee' => 'Bungee',
+                'halo' => 'HALO',
+                'low_altitude' => 'Low Altitude',
+                'parachute' => 'Parachute',
+                'static_line' => 'Static Line',
+                'wingsuit' => 'Wing Suit',
+                'zipline' => 'Zipline',
+            ],
+        ],
+        'gymnastics' => [
+            'label' => 'Automatics',
+            'attribute' => 'agility',
+            'default' => true,
+            'specializations' => [
+                //
+            ],
+        ],
+    ],
 ];

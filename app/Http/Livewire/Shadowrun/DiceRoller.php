@@ -3,12 +3,15 @@
 namespace App\Http\Livewire\Shadowrun;
 
 use App\Models\Shadowrunner;
+use App\Traits\Shadowrun\HasCharacter;
 use DiceCalc\Calc;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
 class DiceRoller extends Component
 {
+    use HasCharacter;
+
     /**
      * Whether the rolling window is open.
      *
