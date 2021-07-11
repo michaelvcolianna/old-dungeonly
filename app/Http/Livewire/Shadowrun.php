@@ -97,23 +97,7 @@ abstract class Shadowrun extends Component
      */
     public function mount()
     {
-        $builder = Shadowrunner::find(1)
-            ->select('id', 'user_id', 'character')
-            ;
-
-        // Add extra columns for this component to the builder
-        foreach(array_keys($this->getFieldConfig()) as $name)
-        {
-            $builder->addSelect($name);
-        }
-
-        // Add extra column for the special fields to the builder, if needed
-        if(in_array($this->getKey(), config('shadowrun.core_combat')))
-        {
-            $builder->addSelect($this->getKey());
-        }
-
-        $this->character = $builder->first();
+        $this->getCharacter();
     }
 
     /**

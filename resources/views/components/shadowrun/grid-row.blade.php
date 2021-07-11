@@ -1,7 +1,10 @@
 @props(['key', 'id', 'fields', 'last' => false])
 
 <div
-    class="grid grid-cols-86-10-pct gap-4pct items-center pl-6 mb-2 grid-row relative row--{{ $key }}--{{ $id }}"
+    class="
+        grid-row row--{{ $key }}--{{ $id }} gap-4pct grid grid-cols-86-10-pct
+        items-center mb-2 pl-6 relative
+    "
     wire:key="field-{{ $key }}-{{ $id }}"
 >
     <div class="grid--row">

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            Dashboard
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="mt-6 text-gray-500">
-                        There will be more here later.
+                        <livewire:character-list />
                     </div>
                 </div>
             </div>

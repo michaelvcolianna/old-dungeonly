@@ -6,26 +6,37 @@
 
         <div class="mb-4 text-sm text-gray-600">
             @if(env('MAIL_LOG_CHANNEL'))
-                {{ __('Thanks for signing up! Since the app is in development, all accounts are manually verified by the admins. We\'ll email you when your account is approved.') }}
+                Thanks for signing up! Since the app is in development, all
+                accounts are manually verified by the admins. We'll email you if
+                your account is approved.
             @else
-                {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                Thanks for signing up! Before getting started, could you verify
+                your email address by clicking on the link we just emailed to
+                you? If you didn't receive the email, we will gladly send you
+                another.
             @endif
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                A new verification link has been sent to the email address you
+                provided during registration.
             </div>
         @endif
 
-        <div class="mt-4 flex items-center {{ env('MAIL_LOG_CHANNEL') ? 'justify-end' : 'justify-between' }}">
+        <div
+            class="
+                mt-4 flex items-center
+                {{ env('MAIL_LOG_CHANNEL') ? 'justify-end' : 'justify-between' }}
+            "
+        >
             @if(!env('MAIL_LOG_CHANNEL'))
                 <form method="POST" action="{{ route('verification.send') }}">
                     @csrf
 
                     <div>
                         <x-jet-button type="submit">
-                            {{ __('Resend Verification Email') }}
+                            Resend Verification Email
                         </x-jet-button>
                     </div>
                 </form>
@@ -35,7 +46,7 @@
                 @csrf
 
                 <x-jet-button class="ml-4">
-                    {{ __('Log out') }}
+                    Log out
                 </x-jet-button>
             </form>
         </div>

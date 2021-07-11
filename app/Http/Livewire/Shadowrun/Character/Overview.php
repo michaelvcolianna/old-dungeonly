@@ -13,6 +13,6 @@ class Overview extends Shadowrun
      */
     public function render()
     {
-        return view('livewire.shadowrun.character.fields');
+        return view('livewire.shadowrun.character.overview');
     }
 }

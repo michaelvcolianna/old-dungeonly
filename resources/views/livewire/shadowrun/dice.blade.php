@@ -3,7 +3,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="p-6 sm:px-20 bg-white md:grid md:grid-cols-2 md:gap-4 md:items-end md:justify-around {{ $results ? 'border-b' : '' }}">
                 <div>
-                    <x-jet-label for="dice" value="{{ __('Number of dice') }}" />
+                    <x-jet-label for="dice" value="Number of dice" />
                     <x-jet-input wire:model.lazy="dice" id="dice" class="block mt-1 w-full" type="number" autofocus wire:keydown.enter="rollDice" />
                 </div>
 
